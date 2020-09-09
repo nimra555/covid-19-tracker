@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   noLabel: {
     marginTop: theme.spacing(3),
   },
-  option:{
+  option: {
     maxHeight: 1000,
   }
 }));
@@ -32,62 +32,81 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function AllcountryData() {
-  const [country,setCountry] = useState();
-  useEffect(()=>{
-    async function CountryData(){
-      // setDataLoading(true);
+  const [country, setCountry] = useState();
+  const [dataLoading,setDataLoading] = useState(false);
+  useEffect(() => {
+    async function CountryData() {
+      setDataLoading(true);
       const data = await fetch('https://api.thevirustracker.com/free-api?countryTotals=ALL');
       const response = await data.json();
       console.log(response.countryitems[0]);
       setCountry(response.countryitems[0]);
-      // setDataLoading(false);
+      setDataLoading(false);
     }
     CountryData();
-  },[])
+  }, [])
   const classes = useStyles();
-  // const theme = useTheme();
-  // const [personName, setPersonName] = React.useState([]);
+  const loading = "Loading";
 
-  // const handleChange = (event) => {
-  //   setPersonName(event.target.value);
-  // };
+  if(dataLoading){
+    return(
+      <div>
+      <Paper elevation={3}>
+        <FormControl className={classes.formControl}>
+          <InputLabel shrink htmlFor="select-multiple-native">
+            {/* {countryData && countryData.results && countryData.countryitems[0].total_recovered}             */}
 
-  // const handleChangeMultiple = (event) => {
-  //   const { options } = event.target;
-  //   const value = [];
-  //   for (let i = 0, l = options.length; i < l; i += 1) {
-  //     if (options[i].selected) {
-  //       value.push(options[i].value);
-  //     }
-  //   }
-  //   setPersonName(value);
-  // };
+          </InputLabel>
+          <Select
+            multiple
+            native
+            // value={countryData}
 
-  return (
-    <div>
-     <Paper elevation={3}>
-      <FormControl className={classes.formControl}>
-        <InputLabel shrink htmlFor="select-multiple-native">
-        {/* {countryData && countryData.results && countryData.countryitems[0].total_recovered}             */}
-  
-        </InputLabel>
-        <Select
-          multiple
-          native
-          // value={countryData}
-          
-          inputProps={{
-            id: 'select-multiple-native',
-          }}
-        >
-          {/* {countryData.map((name) => ( */}
-            <option  className={classes.option}>
-              {country && country.countryitems && country.countryitems[0].total_recovered}            
-              
-            </option>
-         
-        </Select>
-      </FormControl>
+            inputProps={{
+              id: 'select-multiple-native',
+            }}
+          >
+            {/* {countryData.map((name) => ( */}
+            {/* {Object.keys(country).map(item => ( */}
+              <option className={classes.option}>
+              {loading}
+                {/* {country && country[item] && country[item].title} */}
+              </option>
+             
+            
+         </Select>
+        </FormControl>
       </Paper>
     </div>
-  )};
+    )
+            }        
+  return (
+    <div>
+      <Paper elevation={3}>
+        <FormControl className={classes.formControl}>
+          <InputLabel shrink htmlFor="select-multiple-native">
+            {/* {countryData && countryData.results && countryData.countryitems[0].total_recovered}             */}
+
+          </InputLabel>
+          <Select
+            multiple
+            native
+            // value={countryData}
+
+            inputProps={{
+              id: 'select-multiple-native',
+            }}
+          >
+            {/* {countryData.map((name) => ( */}
+            {Object.keys(country).map(item => (
+              <option className={classes.option} key={item}>
+                {country && country[item] && country[item].title}
+              </option>
+            ))} 
+            
+         </Select>
+        </FormControl>
+      </Paper>
+    </div>
+  )
+};

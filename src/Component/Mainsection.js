@@ -4,6 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import GlobalData from './GlobalData';
 import CountryData from './CountryData';
+import PieChart from './Pie';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,8 +37,8 @@ export default function Mainsection() {
                 <Paper className={classes.paper} elevation={3}>
                    <CountryData/>                            
                 </Paper>
+                <PieChart/>
             </Grid>            
-            
           </Grid>
         </div>
     )        

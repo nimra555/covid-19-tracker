@@ -105,7 +105,7 @@ export default function GlobalData() {
             Total Cases
           </Typography>
           <Typography variant="subtitle2" gutterBottom>
-            <NumberFormat value={globalData && globalData.results && globalData.results[0].total_cases} diplayType={'text'} thousandSeperator={true} /> 
+            <NumberFormat value={globalData && globalData.results && globalData.results[0].total_cases} displayType={'text'} thousandSeperator={true} /> 
           {/* // {globalData && globalData.results && globalData.results[0].total_cases}  */}
           </Typography>
         </div>
