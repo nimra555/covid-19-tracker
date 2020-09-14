@@ -51,32 +51,8 @@ export default function AllcountryData() {
   if(dataLoading){
     return(
       <div>
-      <Paper elevation={3}>
-        <FormControl className={classes.formControl}>
-          <InputLabel shrink htmlFor="select-multiple-native">
-            {/* {countryData && countryData.results && countryData.countryitems[0].total_recovered}             */}
-
-          </InputLabel>
-          <Select
-            multiple
-            native
-            // value={countryData}
-
-            inputProps={{
-              id: 'select-multiple-native',
-            }}
-          >
-            {/* {countryData.map((name) => ( */}
-            {/* {Object.keys(country).map(item => ( */}
-              <option className={classes.option}>
-              {loading}
-                {/* {country && country[item] && country[item].title} */}
-              </option>
-             
-            
-         </Select>
-        </FormControl>
-      </Paper>
+       {loading}
+    
     </div>
     )
             }        
@@ -89,20 +65,20 @@ export default function AllcountryData() {
 
           </InputLabel>
           <Select
-            multiple
-            native
+            // multiple
+            // native
             // value={countryData}
 
-            inputProps={{
-              id: 'select-multiple-native',
-            }}
+            // inputProps={{
+            //   id: 'select-multiple-native',
+            // }}
           >
             {/* {countryData.map((name) => ( */}
-            {Object.keys(country).map(item => (
+            {/* {Object.keys(country).map(item => (
               <option className={classes.option} key={item}>
                 {country && country[item] && country[item].title}
               </option>
-            ))} 
+            ))}  */}
             
          </Select>
         </FormControl>
