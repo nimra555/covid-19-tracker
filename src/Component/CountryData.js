@@ -1,39 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-    maxWidth: 300,
-    // maxHeight: 1000,
+const useStyles = makeStyles({
+
+  container: {
+    maxHeight: 440,
   },
-  chips: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  chip: {
-    margin: 2,
-  },
-  noLabel: {
-    marginTop: theme.spacing(3),
-  },
-  option: {
-    maxHeight: 1000,
-  }
-}));
+});
 
 
 
-
-export default function AllcountryData() {
+export default function AllcountryData({handlechange}) {
   const [country, setCountry] = useState();
-  const [dataLoading,setDataLoading] = useState(false);
+  const [dataLoading, setDataLoading] = useState(true);
+  
   useEffect(() => {
     async function CountryData() {
       setDataLoading(true);
@@ -48,41 +36,50 @@ export default function AllcountryData() {
   const classes = useStyles();
   const loading = "Loading";
 
-  if(dataLoading){
-    return(
+  if (dataLoading) {
+    return (
       <div>
-       {loading}
-    
-    </div>
+        {loading}
+
+      </div>
     )
-            }        
+  }
   return (
     <div>
-      <Paper elevation={3}>
-        <FormControl className={classes.formControl}>
-          <InputLabel shrink htmlFor="select-multiple-native">
-            {/* {countryData && countryData.results && countryData.countryitems[0].total_recovered}             */}
 
-          </InputLabel>
-          <Select
-            // multiple
-            // native
-            // value={countryData}
-
-            // inputProps={{
-            //   id: 'select-multiple-native',
-            // }}
-          >
-            {/* {countryData.map((name) => ( */}
-            {/* {Object.keys(country).map(item => (
-              <option className={classes.option} key={item}>
-                {country && country[item] && country[item].title}
-              </option>
-            ))}  */}
-            
-         </Select>
-        </FormControl>
-      </Paper>
+      <Paper className={classes.root}>
+        <TableContainer component={Paper} className={classes.container}>
+          <Table className={classes.table} stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                <TableCell  
+                 >Country Name</TableCell>
+                <TableCell>Total Cases</TableCell>
+                <TableCell>Total Recovered</TableCell>
+                <TableCell>Total Deaths</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {Object.keys(country).map(item => (
+                <TableRow hover role="checkbox" tabIndex={-1} key={item}>
+                 
+                  <TableCell>{country && country[item] && country[item].title}</TableCell>
+                  <TableCell> {country && country[item] && country[item].total_cases}</TableCell>
+                  <TableCell>{country && country[item] && country[item].total_recovered}</TableCell>
+                  <TableCell>{country && country[item] && country[item].total_deaths}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+     </Paper> 
     </div>
   )
+                      
 };
+    
+    
+    
+    
+    
+    

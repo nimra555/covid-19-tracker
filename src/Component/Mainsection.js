@@ -13,33 +13,43 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     paper: {
+        // display:'flex',
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
-        marginTop: 80,
+        marginTop: 50,
     },
 }));
 
 export default function Mainsection() {
-   
+
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
 
-            <Grid item xs={12} sm={4}>
-                <Paper className={classes.paper} elevation={3}>  
-                <GlobalData />                         
-                </Paper>
-            </Grid>  
-            <Grid item xs={12} sm={8}>
-                <Paper className={classes.paper} elevation={3}>
-                   <CountryData/>                            
-                </Paper>
-                <PieChart/>
-            </Grid>            
-          </Grid>
+                <Grid item xs={4} sm={12}>
+                    <Paper className={classes.paper} elevation={3}>
+                        <GlobalData />
+                    </Paper>
+                </Grid>
+
+            </Grid>
+
+            <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                    <Paper className={classes.paper} elevation={3}>
+                        <CountryData />
+                    </Paper>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <Paper className={classes.paper} elevation={3}>
+                        <PieChart/>
+                    </Paper>
+
+                </Grid>
+            </Grid>
         </div>
-    )        
+    )
 };
