@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Searchcountry() {
+function Searchcountry({setState}) {
     const [Countrysearch,setCountrySearch] = useState([]);
     useEffect(() => {
         async function Countrysearchbar() {
@@ -29,10 +29,7 @@ function Searchcountry() {
         Countrysearchbar();
       }, [])
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    data: {},
-    country: '',
-  });
+ 
 
   const handleChange = async (country) => {
       console.log(country);
@@ -45,9 +42,9 @@ function Searchcountry() {
   return (
     <div>
         <FormControl className={classes.formControl}>
-            <NativeSelect defaultValue="" onChange={(e) => handleChange(e.target.value)}>
+            <NativeSelect defaultValue="1" onChange={(e) => handleChange(e.target.value)}>
                 {/* <option value="global">global</option> */}
-                {Object.keys(Countrysearch).map((country) => <option key={country} value={Countrysearch[country].title}>{Countrysearch[country].title}</option>)}
+                {Object.keys(Countrysearch).map((country) => <option key={country} value={country}>{Countrysearch[country].title}</option>)}
             </NativeSelect>
         </FormControl>
     </div>  

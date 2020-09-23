@@ -3,7 +3,7 @@ import Countrybar from './Countrybar';
 import Searchcountry from './Search';
 
 function Footer(props){
-    // const [state, setState] = useState({
+    const [state, setState] = useState("1");
     //     data: {},
     //     country: '',
     //   });
@@ -18,8 +18,9 @@ function Footer(props){
     //   };
     return(
        <div>
-           <Searchcountry />
-           <Countrybar country={props.country}/>
+           <Searchcountry setState={setState}/>
+    
+           <Countrybar state={state}/>
        </div>
     )
 }
