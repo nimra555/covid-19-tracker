@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-// import InputLabel from '@material-ui/core/InputLabel';
-// import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-// import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -33,17 +31,13 @@ function Searchcountry({setState}) {
 
   const handleChange = async (country) => {
       console.log(country);
-    // const name = event.target.name;
-    setState({
-      country: country,
-    });
+    setState(country);
   };
 
   return (
     <div>
         <FormControl className={classes.formControl}>
             <NativeSelect defaultValue="1" onChange={(e) => handleChange(e.target.value)}>
-                {/* <option value="global">global</option> */}
                 {Object.keys(Countrysearch).map((country) => <option key={country} value={country}>{Countrysearch[country].title}</option>)}
             </NativeSelect>
         </FormControl>

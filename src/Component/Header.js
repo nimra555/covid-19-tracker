@@ -15,8 +15,11 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     display: 'none',
+    textAlign:'center',
+    textTransform:'uppercase',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
+      
     },
   },
  
@@ -31,7 +34,7 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
-            Covid Tracker
+           <h1> Covid Tracker </h1>
           </Typography>
         </Toolbar>
       </AppBar>

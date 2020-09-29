@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     paper: {
-        // display:'flex',
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
@@ -31,6 +30,7 @@ export default function Mainsection() {
 
                 <Grid item xs={4} sm={12}>
                     <Paper className={classes.paper} elevation={3}>
+                      <h4> GLOBAL DATA </h4>
                         <GlobalData />
                     </Paper>
                 </Grid>

@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 
 
 
-export default function AllcountryData({handlechange}) {
+export default function AllcountryData() {
   const [country, setCountry] = useState();
   const [dataLoading, setDataLoading] = useState(true);
   

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-// import NumberFormat from 'react-number-format';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -14,15 +13,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     justifyContent:'center',
-    // flexWrap: 'wrap',
+  
     '& > *': {
       margin: theme.spacing(1),
-      // width: '100%',
       height: theme.spacing(16),
     },
   },
   container: {
-    // width: 1000,
     display: 'flex',
     justifyContent:'center',
     alignItems:'center',
@@ -33,10 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 const useStylesTypography = makeStyles({
   root: {
-    // width: '100%',
-    // maxWidth: 500,
     padding:'30px 50px' ,
-    // height:800,
     textTransform:'uppercase',
     fontStyle:'light',
   },
@@ -114,7 +108,6 @@ export default function GlobalData() {
             Total Cases
           </Typography>
           <Typography variant="subtitle2" gutterBottom>
-            {/* <NumberFormat value={globalData && globalData.results && globalData.results[0].total_cases} displayType={'text'} thousandSeperator={true} />  */}
            {globalData && globalData.results && globalData.results[0].total_cases} 
           </Typography>
         </div>
